@@ -7,12 +7,12 @@ const today = new Date();
 const messages = [
   {
     text: "Hi there!",
-    user: "Amando",
+    user: "Angina",
     added: today.toLocaleDateString('en-En')
   },
   {
-    text: "Hello World!",
-    user: "Charles",
+    text: "Welcome to my mini message board.",
+    user: "Angina",
     added: today.toLocaleDateString('en-En')
   }
 ];
@@ -25,7 +25,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-    res.render("form")
+    res.render("form", {
+        messages: messages
+    })
 })
 
 router.post("/new", (req, res) => {
@@ -36,9 +38,10 @@ router.post("/new", (req, res) => {
 
 router.get("/message/:id", (req, res) => {
     const id = req.params.id;
+
     const message = messages[id];
 
     res.render("message", {message});
-})
+});
 
 module.exports = router;

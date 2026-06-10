@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message</title>
-</head>
-<body>
-    <h1><%= message.user %></h1>
-    <h2><%= message.text %></h2>
-    <h3><%= message.added %></h3>
+<%- include('./partials/head.html') %>
 
-    <a href="/">Back</a>
+<body>
+    <%- include('./partials/nav.html')%>
+    <div class="messagePage">
+        <div class="singleMessage">
+            <h1><%= message.user %></h1>
+            <h2><%= message.text %></h2>
+            <h3><%= message.added %></h3>
+        </div>
+        <button class="backBtn"><a href="/">Back</a></button>
+    </div>
 </body>
 </html>

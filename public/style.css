@@ -1,0 +1,123 @@
+body{
+    background-image: url('background.jpg');
+    background-position: center;
+    background-size: cover;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    background-color: white;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.links{
+    display: flex;
+    gap: 50px;
+}
+a{
+    text-decoration: none;
+    color: inherit;    
+}
+
+.allMessages{
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+}
+.messageBox{
+    background-color: rgb(255, 255, 186);
+    width: 250px;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 4px 4px 0px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+.openBtn{
+    background-color: rgb(255, 106, 106);
+    border: 2px solid black;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+}
+button:hover{
+    cursor: pointer;
+}
+.messageBox>h1{
+    font-size: 15px;
+}
+.dateMessage{
+    margin-top: auto;
+}
+
+.newMessage{
+    position: absolute;
+    padding: 10px 30px;
+    top: 200px;
+    left: 700px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+form{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.btnSubmit{
+    background-color: rgb(149, 188, 212);
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.singleMessage{
+    background-color: rgb(255, 255, 186);
+    width: 800px;
+    min-height: 300px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.backBtn{
+    background-color: rgb(149, 188, 212);
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.messagePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}

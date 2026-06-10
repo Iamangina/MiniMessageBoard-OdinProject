@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
+<%- include('./partials/head.html') %>
+
 <body>
+    <%- include('./partials/nav.html')%>
+    <div class="allMessages">
     <% for(const message of messages){ %>
+        <div class="messageBox">
+            <a href="/message/<%= messages.indexOf(message) %>">
+                <button class="openBtn"></button>
+            </a>
             <h1>Author: <%= message.user %></h1>
             <h2><%= message.text %></h2>
-            <h3><%= message.added %></h3>
-            <a href="/message/<%= messages.indexOf(message) %>">
-                <button>Open</button>
-            </a>
+            <p class="dateMessage"><%= message.added %></p>
+        </div>
     <% } %>
-    <button><a href="/new">New Form</a></button>    
+    </div>
 </body>
 </html>
