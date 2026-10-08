@@ -1,47 +1,57 @@
 const { Router } = require("express");
+const db = require("../db/queries");
 
 const router = Router();
 
-const today = new Date();
+//const today = new Date();
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Angina",
-    added: today.toLocaleDateString('en-En')
-  },
-  {
-    text: "Welcome to my mini message board.",
-    user: "Angina",
-    added: today.toLocaleDateString('en-En')
-  }
-];
+// const messages = [
+//   {
+//     text: "Hi there!",
+//     user: "Angina",
+//     added: today.toLocaleDateString('en-En')
+//   },
+//   {
+//     text: "Welcome to my mini message board.",
+//     user: "Angina",
+//     added: today.toLocaleDateString('en-En')
+//   }
+// ];
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+  const messages = await db.getAllMessages();
+
   res.render("index", {
     title: "Mini Messageboard",
     messages: messages
   });
 });
 
-router.get("/new", (req, res) => {
-    res.render("form", {
-        messages: messages
-    })
-})
+router.get("/new", async (req, res) => {
+  const messages = await db.getAllMessages();
 
-router.post("/new", (req, res) => {
-    const {author, messageText} = req.body;
-    messages.push({ text: messageText, user: author, added: today.toLocaleDateString('en-En') });
-    res.redirect("/")
-})
+  res.render("form", {
+    messages: messages
+  });
+});
+router.post("/new", async (req, res) => {
+  const { author, messageText } = req.body;
 
-router.get("/message/:id", (req, res) => {
-    const id = req.params.id;
+  await db.insertMessage(author, messageText);
 
-    const message = messages[id];
+  res.redirect("/");
+});
 
-    res.render("message", {message});
+router.get("/message/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const message = await db.getMessageById(id);
+
+  if (!message) {
+    return res.status(404).send("Message not found");
+  }
+
+  res.render("message", { message });
 });
 
 module.exports = router;

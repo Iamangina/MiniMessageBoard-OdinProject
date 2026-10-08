@@ -5,12 +5,14 @@
     <div class="allMessages">
     <% for(const message of messages){ %>
         <div class="messageBox">
-            <a href="/message/<%= messages.indexOf(message) %>">
+            <a href="/message/<%= message.id %>">
                 <button class="openBtn"></button>
             </a>
-            <h1>Author: <%= message.user %></h1>
+            <h1>Author: <%= message.username %></h1>
             <h2><%= message.text %></h2>
-            <p class="dateMessage"><%= message.added %></p>
+            <p class="dateMessage">
+                <%= new Date(message.added).toLocaleDateString('en-GB') %>
+            </p>
         </div>
     <% } %>
     </div>

@@ -1,32 +1,56 @@
 <%- include('./partials/head.html') %>
+
 <body>
-    <%- include('./partials/nav.html')%>
+
+    <%- include('./partials/nav.html') %>
+
     <div class="allMessages">
+
     <% for(const message of messages){ %>
+
         <div class="messageBox">
-            <a href="/message/<%= messages.indexOf(message) %>">
+
+            <a href="/message/<%= message.id %>">
                 <button class="openBtn"></button>
             </a>
-            <h1>Author: <%= message.user %></h1>
+
+            <h1>Author: <%= message.username %></h1>
+
             <h2><%= message.text %></h2>
-            <p class="dateMessage"><%= message.added %></p>
+
+            <p class="dateMessage">
+                <%= new Date(message.added).toLocaleDateString('en-GB') %>
+            </p>
+
         </div>
+
     <% } %>
+
     </div>
+
     <div class="newMessage">
-            <h1>New message:</h1>
+
+        <h1>New message:</h1>
+
         <form method="POST" action="/new">
-            
+
             <div class="form">
+
                 <label for="author">Author</label>
                 <input type="text" id="author" name="author">
-            
+
                 <label for="messageText">Message</label>
                 <input type="text" id="messageText" name="messageText">
-            
+
             </div>
-            <button class="btnSubmit" type="submit">Add New Message</button>
-        </form>    
+
+            <button class="btnSubmit" type="submit">
+                Add New Message
+            </button>
+
+        </form>
+
     </div>
+
 </body>
 </html>
